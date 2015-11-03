@@ -61,11 +61,12 @@ public class NewExpressionTranslator {
                     ctx.append("]");
                 } else {
                     int dimensionCount = arrayDimensions.length;
+                    ctx.append("new ");
+                    ctx.append(TypeHelper.printType(element.getType(), ctx).replace("[]", ""));
                     for (int i = 0; i < dimensionCount; i++) {
-                        ctx.append("new Array(");
-                    }
-                    for (int i = 0; i < dimensionCount; i++) {
-                        ctx.append(")");
+                        ctx.append("[");
+                        ExpressionTranslator.translate(arrayDimensions[i], ctx);
+                        ctx.append("]");
                     }
                 }
             }

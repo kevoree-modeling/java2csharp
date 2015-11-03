@@ -14,6 +14,8 @@ public class AnonymousClassTranslator {
 
     public static void translate(PsiAnonymousClass element, TranslationContext ctx) {
 
+        
+
         if (TypeHelper.isCallbackClass(element.getBaseClassType().resolve())) {
             PsiMethod method = element.getAllMethods()[0];
             PsiParameter[] parameters = method.getParameterList().getParameters();
